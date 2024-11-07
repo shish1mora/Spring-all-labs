@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Подробнее</title>
+    <link rel = "stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.mi
+n.css">
+    <script src =
+                    "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script src =
+                    "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="/class.css" />
+</head>
+<body>
+<div class="container">
+    <h1>Подробнее</h1>
+    <span th:utext="${'ID: ' + selectedStudent.id +
+    ' <br>  Фамилия: ' + selectedStudent.surname + '<br> Имя: ' + selectedStudent.name + '<br> Отчество: ' + selectedStudent.patronym + '<br> Город: ' +
+    selectedStudent.city + '<br> Пол: ' + selectedStudent.gender + '<br> Возраст: ' + selectedStudent.age + '<br> Факультет: ' + selectedStudent.faculty + '<br> Группа: ' + selectedStudent.classgroup}" />
+
+</div>
+<a href="../institut">Вернуться к списку</a>
+</body>
+</html>
