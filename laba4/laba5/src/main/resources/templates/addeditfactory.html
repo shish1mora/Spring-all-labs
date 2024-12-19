@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Добавление предприятия</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Информация о предприятии</h1>
+  <a class="btn" href="/factorys">К списку предприятий</a>
+  <form class="customfrm" action="#" th:action="@{/factorys/add}" th:object="${factory}" method="factory">
+    <div class="form-group">
+      <input type="hidden" class="form-control" th:field="*{id}" />
+      <div class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
+      <p>Название: <input type="text" class="form-control" placeholder="Введите название" th:field="*{title}"/></p>
+    </div>
+    <p class="singleRow">
+      <input type="submit" class="btn btn-success" th:if="${id==null}" value="Добавить"/>
+      <input type="submit" class="btn btn-success" th:if="${id!=null}" value="Изменить"/>
+      <input type="reset" class="btn btn-secondary" value="Очистить поля ввода" />
+    </p>
+  </form>
+</div>
+</body>
+</html>
