@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Добавление военнослужащего</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Информация о сотруднике</h1>
+    <a class="btn" href="/enterprises">К списку предприятий</a>
+    <form class="customfrm" action="#" th:action="@{/workers/add}" th:object="${worker}" method="post">
+        <div class="form-group">
+            <input type="hidden" class="form-control" th:field="*{id}" />
+            <div class="text-danger" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"/>
+            <p>Фамилия: <input type="text" class="form-control" placeholder="Введите фамилию" th:field="*{surname}" /></p>
+            <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+            <p>Имя: <input type="text" class="form-control" placeholder="Введите имя" th:field="*{name}" /></p>
+            <p>Отчество: <input type="text" class="form-control" placeholder="Введите отчество" th:field="*{patronym}" /></p>
+            <div class="text-danger" th:if="${#fields.hasErrors('homeAddress')}" th:errors="*{homeAddress}"/>
+            <p>Адрес проживания: <input type="text" class="form-control" placeholder="Введите адрес проживания" th:field="*{homeAddress}" /></p>
+            <div class="text-danger" th:if="${#fields.hasErrors('nationality')}" th:errors="*{nationality}"/>
+            <p>Гражданство: <input type="text" class="form-control" placeholder="Введите гражданство" th:field="*{nationality}" /></p>
+            <p>Дата рождения: <input type="date" class="form-control" content="" th:field="*{dateOfBirth}" th:value="${{dateOfBirth}}" /></p>
+            <div class="text-danger" th:if="${#fields.hasErrors('departmentNo')}" th:errors="*{departmentNo}"/>
+            <p>Номер отдела: <input type="number" class="form-control" placeholder="Введите номер отдела" th:field="*{departmentNo}" /></p>
+            <div class="text-danger" th:if="${#fields.hasErrors('tabNumber')}" th:errors="*{tabNumber}"/>
+            <p>Табельный номер: <input type="number" class="form-control" placeholder="Введите табельный номер" th:field="*{tabNumber}" /></p>
+            <div class="text-danger" th:if="${#fields.hasErrors('education')}" th:errors="*{education}"/>
+            <p>Образование: <input type="text" class="form-control" placeholder="Введите образование" th:field="*{education}" /></p>
+            <p>Дата трудоустройства: <input type="date" class="form-control" content="" th:field="*{employmentDate}" th:value="${{employmentDate}}" /></p>
+            <p>Предприятие: <input type="text" class="form-control" placeholder="Введите предприятие" th:field="*{factory.name}" /></p>
+        </div>
+        <p class="singleRow">
+            <input type="submit" class="btn btn-success" th:if="${worker.id==null}" value="Добавить"/>
+            <input type="submit" class="btn btn-success" th:if="${worker.id!=null}" value="Изменить"/>
+            <input type="reset" class="btn btn-secondary" value="Очистить поля ввода" />
+        </p>
+    </form>
+</div>
+</body>
+</html>
