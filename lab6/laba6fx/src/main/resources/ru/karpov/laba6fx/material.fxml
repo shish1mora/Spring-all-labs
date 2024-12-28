@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="ru.karpov.laba6fx.MaterialController">
+    <Label text="Type:" />
+    <TextField fx:id="typeField" />
+    <Label text="Color:" />
+    <TextField fx:id="colorField" />
+    <Label text="Size:" />
+    <TextField fx:id="sizeField" />
+    <Label text="Cost:" />
+    <TextField fx:id="costField" />
+    <Button text="Create" onAction="#createMaterial" />
+    <Button text="Update" onAction="#updateMaterial" />
+    <Button text="Delete" onAction="#deleteMaterial" />
+    <ListView fx:id="materialListView" />
+</VBox>

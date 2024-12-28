@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Работники</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Работники</h1>
+  <span th:if="${workers.size() == 0}">Список работников пустой</span>
+  <table th:if="${workers.size() > 0}" class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <td>ID</td>
+      <td>Фамилия</td>
+      <td>Имя</td>
+      <td>Отчество</td>
+      <td>Адрес проживания</td>
+      <td>Гражданство</td>
+      <td style="min-width: 110px;">Дата рождения</td>
+      <td>Номер отдела</td>
+      <td>Табельный номер</td>
+      <td>Образование</td>
+      <td>Дата трудоустройства</td>
+      <td>Должность</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="worker : ${workers}">
+      <td th:text="${worker.id}" />
+      <td th:text="${worker.surname}" />
+      <td th:text="${worker.name}" />
+      <td th:text="${worker.patronym}" />
+      <td th:text="${worker.homeAddress}" />
+      <td th:text="${worker.nationality}" />
+      <td th:text="${worker.dateOfBirth}" />
+      <td th:text="${worker.departmentNo}" />
+      <td th:text="${worker.tabNumber}" />
+      <td th:text="${worker.education}" />
+      <td th:text="${worker.employmentDate}" />
+      <td th:text="${worker.factory?.name}" />
+      <td><a class="btn btn-info" th:href="@{'/workers/details/' + ${worker.id}}">Подробнее</a></td>
+      <td><a class="btn btn-warning" th:href="@{'/workers/update/' + ${worker.id}}">Редактировать</a></td>
+      <td><a class="btn btn-danger" th:href="@{'/workers/delete/' + ${worker.id}}">Удалить</a></td>
+    </tr>
+      </tbody>
+    </table>
+    <a class="btn" th:href="@{'/workers/add'}">Добавить работника</a>
+  </div>
+<div class="container">
+  <form class="customfrm" action="#" th:action="@{/findworkersbypost}" th:object="${factory}" method="post">
+    <div class="form-group">
+      <p>Должность: <input type="text" class="form-control" placeholder="Введите должность" th:field="*{name}"/></p>
+    </div>
+    <p class="singleRow">
+      <input type="submit" class="btn btn-success" value="Поиск" />
+      <input type="reset" class="btn btn-secondary" value="Очистить поле ввода" />
+    </p>
+  </form>
+</div>
+</body>
+</html>

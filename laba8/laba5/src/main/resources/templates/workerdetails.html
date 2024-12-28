@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о военнослужащем</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Сотрудник</h1>
+    <a class="btn btn-secondary" th:href="@{'/workers/update/' + ${selectedWorker.id}}">Редактировать</a>
+    <ul class="list-group">
+        <li class="list-group-item">ID: <span th:text="${selectedWorker.id}"></span></li>
+        <li class="list-group-item">Фамилия: <span th:text="${selectedWorker.surname}"></span></li>
+        <li class="list-group-item">Имя: <span th:text="${selectedWorker.name}"></span></li>
+        <li class="list-group-item">Отчество: <span th:text="${selectedWorker.patronym}"></span></li>
+        <li class="list-group-item">Адрес проживания: <span th:text="${selectedWorker.homeAddress}"></span></li>
+        <li class="list-group-item">Гражданство: <span th:text="${selectedWorker.nationality}"></span></li>
+        <li class="list-group-item">Дата рождения: <span th:text="${selectedWorker.dateOfBirth}"></span></li>
+        <li class="list-group-item">Номер отдела: <span th:text="${selectedWorker.departmentNo}"></span></li>
+        <li class="list-group-item">Табельный номер: <span th:text="${selectedWorker.tabNumber}"></span></li>
+        <li class="list-group-item">Образование: <span th:text="${selectedWorker.education}"></span></li>
+        <li class="list-group-item">Дата трудоустройства: <span th:text="${selectedWorker.employmentDate}"></span></li>
+    </ul>
+
+        <a th:href="@{'/kazarma'}" class="btn btn-primary mt-3">Назад к списку</a>
+    </div>
+</body>
+</html>

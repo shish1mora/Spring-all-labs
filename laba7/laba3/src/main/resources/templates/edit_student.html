@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать студента</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Редактировать абитуриента</h1>
+
+    <form th:action="@{/students/update}" th:object="${student}" method="post">
+        <input type="hidden" th:field="*{id}"/>  <!-- Скрытое поле для id студента -->
+
+        <div class="form-group">
+            <label for="surname">Фамилия</label>
+            <input type="text" class="form-control" id="surname" th:field="*{surname}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="patronymic">Отчество</label>
+            <input type="text" class="form-control" id="patronymic" th:field="*{patronymic}">
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Пол</label>
+            <select class="form-control" id="gender" th:field="*{gender}" required>
+                <option value="Мужской" th:selected="${student.gender == 'Мужской'}">Мужской</option>
+                <option value="Женский" th:selected="${student.gender == 'Женский'}">Женский</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="nationality">Национальность</label>
+            <input type="text" class="form-control" id="nationality" th:field="*{nationality}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth">Дата рождения</label>
+            <input type="date" class="form-control" id="dateOfBirth" th:field="*{dateOfBirth}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="examScores">Экзаменационные баллы</label>
+            <input type="number" class="form-control" id="examScores" th:field="*{examScores}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="passingScore">Проходной балл</label>
+            <input type="number" class="form-control" id="passingScore" th:field="*{passingScore}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="passingScore">Проходной балл</label>
+            <input type="text" class="form-control" id="email" th:field="*{email}" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Сохранить</button>
+        <a th:href="@{/students/list}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+</body>
+</html>
